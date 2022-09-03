@@ -1,23 +1,30 @@
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
 
-
+@RunWith(MockitoJUnitRunner.class)
 public class BurgerExceptionsTest {
     private Burger burger;
     private final int VALID_INDEX = 1;
     private final int NEGATIVE_INDEX = -1;
     private final int OUT_OF_RANGE_INDEX = 3;
 
+    @Mock
+    Ingredient ingredient;
+
     @Before
     public void setUp() {
         burger = new Burger();
-        burger.addIngredient(new Ingredient(IngredientType.FILLING, "Тестовый ингредиент 1", 100));
-        burger.addIngredient(new Ingredient(IngredientType.FILLING, "Тестовый ингредиент 2", 200));
-        burger.addIngredient(new Ingredient(IngredientType.FILLING, "Тестовый ингредиент 3", 300));
+        burger.addIngredient(ingredient);
+        burger.addIngredient(ingredient);
+        burger.addIngredient(ingredient);
     }
 
     // Проверка некорректного перемещения элементов из списка ингредиентов

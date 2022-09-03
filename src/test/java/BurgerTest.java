@@ -52,7 +52,6 @@ public class BurgerTest {
     @Test
     public void setBunTest() {
         Burger burger = new Burger();
-        Bun bun = new Bun("Тестовая булочка", 100);
         burger.setBuns(bun);
         Assert.assertEquals(bun, burger.bun);
     }
@@ -98,8 +97,15 @@ public class BurgerTest {
         burger.addIngredient(null);
         burger.addIngredient(null);
         burger.moveIngredient(0, 1);
-        for (Ingredient ingredient : burger.ingredients) {
-            Assert.assertTrue(ingredient == null);
+        for (int i=0;i<2;i++) {
+            Assert.assertTrue(burger.ingredients.get(i) == null);
         }
+    }
+
+    @Test
+    public void addIngredientTest() {
+        Burger burger = new Burger();
+        burger.addIngredient(ingredient);
+        Assert.assertNotNull(burger.ingredients.get(0));
     }
 }
